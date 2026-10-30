@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,8 +10,8 @@
 <meta name="robots" content="index, follow">
 <meta name="google-site-verification" content="0d2XaISK9d_I3VrvTGI-0Q_jA2SwttlX7aFmNDVJa4U">
 <link rel="canonical" href="https://atlas-research-vn.pages.dev/">
-<meta name="theme-color" content="#F6F5F1" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0B111B" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6F8FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#F6F8FB" media="(prefers-color-scheme: dark)">
 
 <!-- ===================== ICON ===================== -->
 <link rel="icon" href="img/logo.svg" type="image/svg+xml">
@@ -39,8 +39,8 @@
 <!-- ===================== FONT + CSS ===================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap">
-<link rel="stylesheet" href="css/style.css?v=20261003">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css?v=20261030d">
 
 <!-- ===================== DỮ LIỆU CÓ CẤU TRÚC (schema.org) ===================== -->
 <script type="application/ld+json">
@@ -67,290 +67,238 @@
 
 <!-- Biểu tượng dùng lại nhiều lần -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.3 3 8.1 7 9.5 4-1.4 7-5.2 7-9.5V6l-7-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V6a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
-  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V4h11" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" fill="currentColor"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
 </svg>
 
 <a class="skip-link" href="#noi-dung">Bỏ qua điều hướng</a>
 
-<header class="site-header">
-  <div class="container site-header__inner">
-    <a class="brand" href="./">
-      <img class="brand__mark" src="img/logo.svg" alt="" width="36" height="36">
-      <span class="brand__text">
-        <span class="brand__name">Atlas Research</span>
-        <span class="brand__tag">Góc kiến thức &amp; liên kết đa sàn</span>
-      </span>
-    </a>
-    <nav class="site-nav" aria-label="Điều hướng chính">
-      <a href="#doi-tac">Các sàn</a>
-      <a href="#an-toan">An toàn</a>
-    </nav>
-  </div>
+<!-- ===================== THANH CÔNG CỤ (dính trên cùng khi cuộn) ===================== -->
+<header class="bar">
+  <a class="bar__brand" href="./">
+    <img src="img/logo.svg" alt="" width="32" height="32">
+    <span>Atlas Research</span>
+  </a>
+  <nav class="bar__nav" aria-label="Điều hướng chính">
+    <a href="#doi-tac">Các sàn</a>
+    <a href="#kiem-tra">Kiểm tra link</a>
+    <a href="#an-toan">An toàn</a>
+    <a href="news/">Tin tức</a>
+  </nav>
+  <a class="btn btn--primary bar__action" href="#kiem-tra">Kiểm tra link</a>
 </header>
 
 <main id="noi-dung">
 
-  <!-- ===================== HERO ===================== -->
-  <section class="hero">
-    <div class="container hero__grid">
-      <div class="hero__copy">
-        <p class="eyebrow">Đối tác · Affiliate Hub</p>
-        <h1>Hệ thống liên&nbsp;kết <em>đa&nbsp;sàn</em></h1>
-        <p class="lead">Tổng hợp liên kết truy cập đến các nền tảng giao dịch tài sản mã hóa uy tín tại Việt Nam, đồng hành cùng cộng đồng Atlas Research.</p>
-        <ul class="hero__facts">
-          <li><svg aria-hidden="true"><use href="#i-grid"/></svg>4 nền tảng giao dịch trong nước</li>
-          <li><svg aria-hidden="true"><use href="#i-shield"/></svg>Liên kết trực tiếp tới tên miền chính thức</li>
-          <li><svg aria-hidden="true"><use href="#i-info"/></svg>Thông tin mang tính tham khảo</li>
-        </ul>
+  <!-- ===================== HERO: một tiêu đề, một câu, một nút ===================== -->
+  <section class="frame hero" aria-labelledby="hero-title">
+    <div class="hero__inner">
+      <h1 id="hero-title" class="masked"><span class="line"><span>Tên miền</span></span> <span class="line"><span>chính thức</span></span></h1>
+      <p class="hero__standfirst" data-reveal>Địa chỉ thật của bốn sàn giao dịch tài sản mã hóa tại Việt Nam, kèm công cụ kiểm tra link trước khi bạn đăng nhập.</p>
+      <div class="hero__actions" data-reveal>
+        <a class="btn btn--primary" href="#doi-tac">Xem bốn sàn</a>
+        <a class="hero__link" href="#kiem-tra">Kiểm tra một đường link</a>
       </div>
-
-      <aside class="quick" aria-labelledby="quick-title">
-        <div class="quick__head">
-          <h2 id="quick-title">Truy cập nhanh</h2>
-          <span>Tên miền chính thức</span>
-        </div>
-        <ol class="quick__list">
-          <li><a href="https://moonbase.vn/" target="_blank" rel="noopener sponsored" data-partner="moonbase" data-placement="quick" style="--brand:#1652F0">
-            <span class="quick__num">01</span><span class="quick__name">Moonbase</span><span class="quick__domain">moonbase.vn</span>
-            <svg class="quick__arrow" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-          </a></li>
-          <li><a href="https://scex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="scex" data-placement="quick" style="--brand:#C29A3A">
-            <span class="quick__num">02</span><span class="quick__name">SCEX</span><span class="quick__domain">scex.com.vn</span>
-            <svg class="quick__arrow" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-          </a></li>
-          <li><a href="https://www.tcex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="tcex" data-placement="quick" style="--brand:#E1251B">
-            <span class="quick__num">03</span><span class="quick__name">TCEX</span><span class="quick__domain">tcex.com.vn</span>
-            <svg class="quick__arrow" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-          </a></li>
-          <li><a href="https://www.caex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="caex" data-placement="quick" style="--brand:#22C55E">
-            <span class="quick__num">04</span><span class="quick__name">CAEX</span><span class="quick__domain">caex.com.vn</span>
-            <svg class="quick__arrow" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-          </a></li>
-        </ol>
-        <p class="quick__note"><svg aria-hidden="true"><use href="#i-shield"/></svg>Luôn đối chiếu thanh địa chỉ trước khi đăng nhập.</p>
-      </aside>
     </div>
+    <ul class="hero__logos" aria-label="Các sàn trong danh sách" data-reveal>
+      <li><a href="#moonbase"><img src="img/partners/moonbase.png" alt="Moonbase" width="224" height="69"></a></li>
+      <li><a href="#scex"><img src="img/partners/scex.png" alt="SCEX" width="230" height="73"></a></li>
+      <li><a href="#tcex"><img src="img/partners/tcex.png" alt="TCEX" width="205" height="66"></a></li>
+      <li><a href="#caex" class="is-dark"><img src="img/partners/caex.png" alt="CAEX" width="285" height="96"></a></li>
+    </ul>
   </section>
 
-  <!-- ===================== DANH SÁCH ĐỐI TÁC ===================== -->
-  <section class="section" id="doi-tac" aria-labelledby="partners-title">
-    <div class="container">
-      <div class="section__head">
-        <div>
-          <p class="eyebrow">Danh sách đối tác</p>
-          <h2 id="partners-title">Các nền tảng giao dịch</h2>
-        </div>
-        <p class="section__desc">Giới thiệu ngắn gọn về từng doanh nghiệp. Tính năng tạo link giới thiệu cá nhân sẽ được cập nhật trong thời gian tới.</p>
+  <!-- ===================== CÁC SÀN: mỗi sàn một chương màu ===================== -->
+  <section id="doi-tac" aria-labelledby="partners-title">
+    <h2 id="partners-title" class="sr-only">Các nền tảng giao dịch</h2>
+
+    <article class="partner frame" id="moonbase" style="--brand:#CFDDFF;--brand-ink:#0F1B2D;--brand-deep:#B5C9FA">
+      <div class="partner__text" data-reveal>
+        <h3 class="partner__name">Moonbase</h3>
+        <p class="partner__tagline">Nền tảng giao dịch tài sản mã hóa tiên phong của Việt Nam.</p>
+        <p class="partner__desc">Moonbase mang sứ mệnh đưa 100 triệu người Việt bước vào kỷ nguyên tài sản số: an toàn, minh bạch và bền vững. 100% công nghệ lõi và hạ tầng do đội ngũ kỹ sư Việt Nam xây dựng.</p>
+        <p class="partner__tags">Hạ tầng đặt tại Việt Nam · An toàn thông tin cấp độ 4 · Biểu đồ TradingView</p>
       </div>
-
-      <div class="partners">
-
-        <article class="partner" id="moonbase" style="--brand:#1652F0">
-          <div class="partner__plate">
-            <img src="img/partners/moonbase.png" alt="Logo Moonbase" width="224" height="69" loading="lazy">
-          </div>
-          <div class="partner__body">
-            <div class="partner__head">
-              <h3 class="partner__name">Moonbase</h3>
-              <span class="partner__index" aria-hidden="true">01</span>
-            </div>
-            <p class="partner__tagline">Nền tảng giao dịch tài sản mã hóa tiên phong của Việt Nam</p>
-            <p class="partner__desc">Moonbase mang sứ mệnh đưa 100 triệu người Việt bước vào kỷ nguyên tài sản số — an toàn, minh bạch và bền vững. 100% công nghệ lõi và hạ tầng do đội ngũ kỹ sư Việt Nam xây dựng.</p>
-            <ul class="partner__tags" aria-label="Điểm nổi bật">
-              <li>Hạ tầng đặt tại Việt Nam</li>
-              <li>An toàn thông tin cấp độ 4</li>
-              <li>Biểu đồ TradingView</li>
-            </ul>
-          </div>
-          <div class="partner__domain">
-            <svg aria-hidden="true"><use href="#i-shield"/></svg>
-            <span class="partner__domain-label">Tên miền chính thức</span>
-            <strong>moonbase.vn</strong>
+      <div class="partner__side" data-reveal>
+        <div class="browser" data-ui>
+  <div class="partner__domain">
+            <span class="addr"><svg class="addr__lock" aria-hidden="true"><use href="#i-lock"/></svg><span class="addr__scheme">https://</span><strong>moonbase.vn</strong></span>
             <button class="copy-btn" type="button" data-copy="https://moonbase.vn/" hidden>
               <svg class="copy-btn__icon" aria-hidden="true"><use href="#i-copy"/></svg><svg class="copy-btn__done" aria-hidden="true"><use href="#i-check"/></svg><span class="copy-btn__text" data-label aria-live="polite">Sao chép</span>
             </button>
           </div>
-          <div class="partner__actions">
-            <a class="btn btn--primary" href="https://moonbase.vn/" target="_blank" rel="noopener sponsored" data-partner="moonbase" data-placement="card">
-              Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-            </a>
-            <span class="btn btn--soon" aria-disabled="true">Link giới thiệu<span class="badge">Sắp ra mắt</span></span>
-          </div>
-        </article>
+          <div class="partner__plate"><img src="img/partners/moonbase.png" alt="Logo Moonbase" width="224" height="69" loading="lazy"></div>
+        </div>
+        <p class="partner__domain-note">Tên miền chính thức. Thanh địa chỉ của bạn phải hiện đúng như trên.</p>
+        <div class="partner__actions">
+          <a class="btn btn--primary" href="https://moonbase.vn/" target="_blank" rel="noopener sponsored" data-partner="moonbase" data-placement="card">
+            Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
+          </a>
+          <span class="btn btn--soon" aria-disabled="true">Link giới thiệu sắp có</span>
+        </div>
+      </div>
+    </article>
 
-        <article class="partner" id="scex" style="--brand:#C29A3A">
-          <div class="partner__plate">
-            <img src="img/partners/scex.png" alt="Logo SCEX" width="230" height="73" loading="lazy">
-          </div>
-          <div class="partner__body">
-            <div class="partner__head">
-              <h3 class="partner__name">SCEX</h3>
-              <span class="partner__index" aria-hidden="true">02</span>
-            </div>
-            <p class="partner__tagline">Hệ sinh thái an toàn cho tài sản số Việt</p>
-            <p class="partner__desc">SCEX phát triển hạ tầng và giải pháp cho hệ sinh thái tài sản mã hóa, kiên định ba giá trị Safe · Convenient · Efficient, xây dựng trên hạ tầng bảo mật chuẩn quốc gia.</p>
-            <ul class="partner__tags" aria-label="Điểm nổi bật">
-              <li>Bảo mật chuẩn quốc gia</li>
-              <li>An toàn · Thuận tiện · Hiệu quả</li>
-            </ul>
-          </div>
-          <div class="partner__domain">
-            <svg aria-hidden="true"><use href="#i-shield"/></svg>
-            <span class="partner__domain-label">Tên miền chính thức</span>
-            <strong>scex.com.vn</strong>
+    <article class="partner frame" id="scex" style="--brand:#F4E6C2;--brand-ink:#0F1B2D;--brand-deep:#E8D6A4">
+      <div class="partner__text" data-reveal>
+        <h3 class="partner__name">SCEX</h3>
+        <p class="partner__tagline">Hệ sinh thái an toàn cho tài sản số Việt.</p>
+        <p class="partner__desc">SCEX phát triển hạ tầng và giải pháp cho hệ sinh thái tài sản mã hóa, kiên định ba giá trị Safe · Convenient · Efficient, xây dựng trên hạ tầng bảo mật chuẩn quốc gia.</p>
+        <p class="partner__tags">Bảo mật chuẩn quốc gia · An toàn, thuận tiện, hiệu quả</p>
+      </div>
+      <div class="partner__side" data-reveal>
+        <div class="browser" data-ui>
+  <div class="partner__domain">
+            <span class="addr"><svg class="addr__lock" aria-hidden="true"><use href="#i-lock"/></svg><span class="addr__scheme">https://</span><strong>scex.com.vn</strong></span>
             <button class="copy-btn" type="button" data-copy="https://scex.com.vn/" hidden>
               <svg class="copy-btn__icon" aria-hidden="true"><use href="#i-copy"/></svg><svg class="copy-btn__done" aria-hidden="true"><use href="#i-check"/></svg><span class="copy-btn__text" data-label aria-live="polite">Sao chép</span>
             </button>
           </div>
-          <div class="partner__actions">
-            <a class="btn btn--primary" href="https://scex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="scex" data-placement="card">
-              Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-            </a>
-            <span class="btn btn--soon" aria-disabled="true">Link giới thiệu<span class="badge">Sắp ra mắt</span></span>
-          </div>
-        </article>
+          <div class="partner__plate"><img src="img/partners/scex.png" alt="Logo SCEX" width="230" height="73" loading="lazy"></div>
+        </div>
+        <p class="partner__domain-note">Tên miền chính thức. Thanh địa chỉ của bạn phải hiện đúng như trên.</p>
+        <div class="partner__actions">
+          <a class="btn btn--primary" href="https://scex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="scex" data-placement="card">
+            Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
+          </a>
+          <span class="btn btn--soon" aria-disabled="true">Link giới thiệu sắp có</span>
+        </div>
+      </div>
+    </article>
 
-        <article class="partner" id="tcex" style="--brand:#E1251B">
-          <div class="partner__plate">
-            <img src="img/partners/tcex.png" alt="Logo TCEX" width="205" height="66" loading="lazy">
-          </div>
-          <div class="partner__body">
-            <div class="partner__head">
-              <h3 class="partner__name">TCEX</h3>
-              <span class="partner__index" aria-hidden="true">03</span>
-            </div>
-            <p class="partner__tagline">Sàn giao dịch tập trung minh bạch &amp; hiệu quả</p>
-            <p class="partner__desc">TCEX kiến tạo môi trường giao dịch tài sản mã hóa an toàn, minh bạch, vận hành theo mô hình sàn tập trung (CEX) với dữ liệu cập nhật liên tục và công cụ quản lý danh mục toàn diện.</p>
-            <ul class="partner__tags" aria-label="Điểm nổi bật">
-              <li>Mô hình sàn tập trung (CEX)</li>
-              <li>Quản lý danh mục</li>
-              <li>Phân tích &amp; đào tạo</li>
-            </ul>
-          </div>
-          <div class="partner__domain">
-            <svg aria-hidden="true"><use href="#i-shield"/></svg>
-            <span class="partner__domain-label">Tên miền chính thức</span>
-            <strong>tcex.com.vn</strong>
+    <article class="partner frame" id="tcex" style="--brand:#FFD9D3;--brand-ink:#0F1B2D;--brand-deep:#F7C1B8">
+      <div class="partner__text" data-reveal>
+        <h3 class="partner__name">TCEX</h3>
+        <p class="partner__tagline">Sàn giao dịch tập trung minh bạch và hiệu quả.</p>
+        <p class="partner__desc">TCEX kiến tạo môi trường giao dịch tài sản mã hóa an toàn, minh bạch, vận hành theo mô hình sàn tập trung (CEX) với dữ liệu cập nhật liên tục và công cụ quản lý danh mục toàn diện.</p>
+        <p class="partner__tags">Mô hình sàn tập trung (CEX) · Quản lý danh mục · Phân tích và đào tạo</p>
+      </div>
+      <div class="partner__side" data-reveal>
+        <div class="browser" data-ui>
+  <div class="partner__domain">
+            <span class="addr"><svg class="addr__lock" aria-hidden="true"><use href="#i-lock"/></svg><span class="addr__scheme">https://</span><strong>tcex.com.vn</strong></span>
             <button class="copy-btn" type="button" data-copy="https://www.tcex.com.vn/" hidden>
               <svg class="copy-btn__icon" aria-hidden="true"><use href="#i-copy"/></svg><svg class="copy-btn__done" aria-hidden="true"><use href="#i-check"/></svg><span class="copy-btn__text" data-label aria-live="polite">Sao chép</span>
             </button>
           </div>
-          <div class="partner__actions">
-            <a class="btn btn--primary" href="https://www.tcex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="tcex" data-placement="card">
-              Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-            </a>
-            <span class="btn btn--soon" aria-disabled="true">Link giới thiệu<span class="badge">Sắp ra mắt</span></span>
-          </div>
-        </article>
+          <div class="partner__plate"><img src="img/partners/tcex.png" alt="Logo TCEX" width="205" height="66" loading="lazy"></div>
+        </div>
+        <p class="partner__domain-note">Tên miền chính thức. Thanh địa chỉ của bạn phải hiện đúng như trên.</p>
+        <div class="partner__actions">
+          <a class="btn btn--primary" href="https://www.tcex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="tcex" data-placement="card">
+            Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
+          </a>
+          <span class="btn btn--soon" aria-disabled="true">Link giới thiệu sắp có</span>
+        </div>
+      </div>
+    </article>
 
-        <article class="partner" id="caex" style="--brand:#22C55E">
-          <div class="partner__plate partner__plate--dark">
-            <img src="img/partners/caex.png" alt="Logo CAEX" width="285" height="96" loading="lazy">
-          </div>
-          <div class="partner__body">
-            <div class="partner__head">
-              <h3 class="partner__name">CAEX</h3>
-              <span class="partner__index" aria-hidden="true">04</span>
-            </div>
-            <p class="partner__tagline">Sàn giao dịch tài sản mã hóa Việt Nam Thịnh Vượng</p>
-            <p class="partner__desc">CAEX xây dựng nền tảng giao dịch tài sản mã hóa an toàn, minh bạch và tuân thủ pháp luật tại Việt Nam, hướng tới trở thành sàn giao dịch tài sản mã hóa hàng đầu.</p>
-            <ul class="partner__tags" aria-label="Điểm nổi bật">
-              <li>Tuân thủ pháp luật Việt Nam</li>
-              <li>An toàn &amp; minh bạch</li>
-            </ul>
-          </div>
-          <div class="partner__domain">
-            <svg aria-hidden="true"><use href="#i-shield"/></svg>
-            <span class="partner__domain-label">Tên miền chính thức</span>
-            <strong>caex.com.vn</strong>
+    <article class="partner frame" id="caex" style="--brand:#CFEFDB;--brand-ink:#0F1B2D;--brand-deep:#B3E3C5">
+      <div class="partner__text" data-reveal>
+        <h3 class="partner__name">CAEX</h3>
+        <p class="partner__tagline">Sàn giao dịch tài sản mã hóa Việt Nam Thịnh Vượng.</p>
+        <p class="partner__desc">CAEX xây dựng nền tảng giao dịch tài sản mã hóa an toàn, minh bạch và tuân thủ pháp luật tại Việt Nam, hướng tới trở thành sàn giao dịch tài sản mã hóa hàng đầu.</p>
+        <p class="partner__tags">Tuân thủ pháp luật Việt Nam · An toàn và minh bạch</p>
+      </div>
+      <div class="partner__side" data-reveal>
+        <div class="browser" data-ui>
+  <div class="partner__domain">
+            <span class="addr"><svg class="addr__lock" aria-hidden="true"><use href="#i-lock"/></svg><span class="addr__scheme">https://</span><strong>caex.com.vn</strong></span>
             <button class="copy-btn" type="button" data-copy="https://www.caex.com.vn/" hidden>
               <svg class="copy-btn__icon" aria-hidden="true"><use href="#i-copy"/></svg><svg class="copy-btn__done" aria-hidden="true"><use href="#i-check"/></svg><span class="copy-btn__text" data-label aria-live="polite">Sao chép</span>
             </button>
           </div>
-          <div class="partner__actions">
-            <a class="btn btn--primary" href="https://www.caex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="caex" data-placement="card">
-              Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
-            </a>
-            <span class="btn btn--soon" aria-disabled="true">Link giới thiệu<span class="badge">Sắp ra mắt</span></span>
-          </div>
-        </article>
-
+          <div class="partner__plate partner__plate--dark"><img src="img/partners/caex.png" alt="Logo CAEX" width="285" height="96" loading="lazy"></div>
+        </div>
+        <p class="partner__domain-note">Tên miền chính thức. Thanh địa chỉ của bạn phải hiện đúng như trên.</p>
+        <div class="partner__actions">
+          <a class="btn btn--primary" href="https://www.caex.com.vn/" target="_blank" rel="noopener sponsored" data-partner="caex" data-placement="card">
+            Truy cập website<svg aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(mở trong tab mới)</span>
+          </a>
+          <span class="btn btn--soon" aria-disabled="true">Link giới thiệu sắp có</span>
+        </div>
       </div>
-    </div>
+    </article>
   </section>
 
-  <!-- ===================== LƯU Ý AN TOÀN ===================== -->
-  <section class="section section--band" id="an-toan" aria-labelledby="safety-title">
-    <div class="container">
-      <div class="section__head">
-        <div>
-          <p class="eyebrow">Trước khi giao dịch</p>
-          <h2 id="safety-title">Bốn nguyên tắc an toàn</h2>
-        </div>
-        <p class="section__desc">Những thói quen đơn giản giúp bạn tránh phần lớn rủi ro mất tài khoản và lừa đảo trên thị trường tài sản số.</p>
+  <!-- ===================== KIỂM TRA LINK (công cụ chạy trên trình duyệt) ===================== -->
+  <section class="frame checker" id="kiem-tra" aria-labelledby="checker-title">
+    <div class="checker__intro" data-reveal>
+      <h2 id="checker-title">Link này có thật không?</h2>
+      <p>Dán đường link bạn nhận được qua tin nhắn, email hay nhóm chat. Trang sẽ so với bốn tên miền chính thức ở trên và báo nếu đó là trang nhái. Việc kiểm tra diễn ra ngay trên máy bạn, không gửi đi đâu cả.</p>
+    </div>
+    <form class="checker__form" data-checker data-ui data-reveal>
+      <label for="checker-input">Đường link cần kiểm tra</label>
+      <div class="checker__row">
+        <input id="checker-input" name="url" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="ví dụ: moonbase-vn.com/login" aria-describedby="checker-help">
+        <button class="btn btn--primary" type="submit">Kiểm tra</button>
       </div>
-      <ol class="tips">
-        <li class="tip">
-          <span class="tip__num">01</span>
-          <h3>Kiểm tra đúng tên miền</h3>
-          <p>Đối chiếu địa chỉ trên thanh trình duyệt với tên miền chính thức ở trên trước khi đăng nhập. Cẩn trọng với trang giả mạo có tên gần giống.</p>
-        </li>
-        <li class="tip">
-          <span class="tip__num">02</span>
-          <h3>Bật xác thực hai lớp</h3>
-          <p>Kích hoạt 2FA và dùng mật khẩu mạnh, riêng biệt cho từng sàn để giảm thiểu rủi ro khi một tài khoản bị lộ.</p>
-        </li>
-        <li class="tip">
-          <span class="tip__num">03</span>
-          <h3>Không chia sẻ mã OTP</h3>
-          <p>Không cung cấp OTP, mật khẩu hay khóa bí mật cho bất kỳ ai — kể cả người tự nhận là nhân viên hỗ trợ hoặc Atlas Research.</p>
-        </li>
-        <li class="tip">
-          <span class="tip__num">04</span>
-          <h3>Tự nghiên cứu, tự quyết định</h3>
-          <p>Tài sản mã hóa biến động mạnh. Chỉ dùng khoản tiền bạn chấp nhận được rủi ro và luôn tìm hiểu kỹ trước mỗi quyết định.</p>
-        </li>
-      </ol>
+      <p id="checker-help" class="checker__help">Chỉ cần phần tên miền, có hoặc không có https:// đều được.</p>
+      <output class="checker__result" for="checker-input" aria-live="polite" data-result hidden></output>
+      <noscript><p class="checker__help">Công cụ cần JavaScript. Hãy tự đối chiếu: moonbase.vn · scex.com.vn · tcex.com.vn · caex.com.vn</p></noscript>
+    </form>
+  </section>
+
+  <!-- ===================== LƯU Ý AN TOÀN (FAQ) ===================== -->
+  <section class="frame faq" id="an-toan" aria-labelledby="safety-title">
+    <h2 id="safety-title" data-reveal>Trước khi giao dịch</h2>
+    <div class="faq__list" data-reveal>
+      <details name="faq" open>
+        <summary>Làm sao biết mình đang ở đúng trang?</summary>
+        <p>Đối chiếu địa chỉ trên thanh trình duyệt với tên miền chính thức ở trên trước khi đăng nhập. Cẩn trọng với trang giả mạo có tên gần giống, ví dụ thêm dấu gạch ngang hay đổi đuôi tên miền. Khi nghi ngờ, dán link vào công cụ kiểm tra.</p>
+      </details>
+      <details name="faq">
+        <summary>Có cần bật xác thực hai lớp không?</summary>
+        <p>Có. Kích hoạt 2FA và dùng mật khẩu mạnh, riêng biệt cho từng sàn để giảm thiểu rủi ro khi một tài khoản bị lộ.</p>
+      </details>
+      <details name="faq">
+        <summary>Có ai được phép hỏi mã OTP của tôi?</summary>
+        <p>Không ai cả. Không cung cấp OTP, mật khẩu hay khóa bí mật cho bất kỳ ai, kể cả người tự nhận là nhân viên hỗ trợ hoặc Atlas Research.</p>
+      </details>
+      <details name="faq">
+        <summary>Gặp trang giả mạo thì nên làm gì?</summary>
+        <p>Đóng trang và không nhập bất kỳ thông tin nào. Nếu đã lỡ đăng nhập, hãy vào sàn qua tên miền chính thức để đổi mật khẩu ngay và liên hệ bộ phận hỗ trợ của sàn từ chính trang đó.</p>
+      </details>
+      <details name="faq">
+        <summary>Nên dùng bao nhiêu tiền để giao dịch?</summary>
+        <p>Tài sản mã hóa biến động mạnh. Chỉ dùng khoản tiền bạn chấp nhận được rủi ro và luôn tìm hiểu kỹ trước mỗi quyết định.</p>
+      </details>
+      <details name="faq">
+        <summary>Atlas Research có tư vấn đầu tư không?</summary>
+        <p>Không. Thông tin trên trang chỉ giới thiệu chung về doanh nghiệp và thị trường, mang tính tham khảo. Bạn tự nghiên cứu và tự chịu trách nhiệm về quyết định của mình.</p>
+      </details>
+      <details name="faq">
+        <summary>Khi nào có link giới thiệu?</summary>
+        <p>Tính năng tạo link giới thiệu cá nhân sẽ được cập nhật trong thời gian tới. Khi có, nút sẽ xuất hiện ngay cạnh nút truy cập website của từng sàn.</p>
+      </details>
     </div>
   </section>
 
 </main>
 
 <!-- ===================== FOOTER ===================== -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="site-footer__top">
-      <a class="brand brand--footer" href="./">
-        <img class="brand__mark" src="img/logo.svg" alt="" width="36" height="36">
-        <span class="brand__text">
-          <span class="brand__name">Atlas Research</span>
-          <span class="brand__tag">Góc kiến thức &amp; liên kết đa sàn</span>
-        </span>
-      </a>
-      <nav class="site-footer__nav" aria-label="Liên kết chân trang">
-        <a href="#doi-tac">Các sàn</a>
-        <a href="#an-toan">Lưu ý an toàn</a>
-        <a href="#noi-dung">Lên đầu trang</a>
-      </nav>
-    </div>
-
+<footer class="frame site-footer">
+  <p class="site-footer__name" aria-hidden="true">Atlas Research</p>
+  <div class="site-footer__row">
+    <nav class="site-footer__places" aria-label="Liên kết chân trang">
+      <a href="#doi-tac">Các sàn</a>
+      <a href="#kiem-tra">Kiểm tra link</a>
+      <a href="#an-toan">Lưu ý an toàn</a>
+      <a href="news/">Tin tức</a>
+    </nav>
     <div class="disclaimer">
-      <p class="disclaimer__title">Tuyên bố miễn trừ trách nhiệm</p>
+      <h2 class="disclaimer__title">Tuyên bố miễn trừ trách nhiệm</h2>
       <p>Các thông tin trên trang này chỉ mang tính chất giới thiệu chung về doanh nghiệp và thị trường, mang tính tham khảo, không cấu thành lời mời chào đầu tư, tư vấn đầu tư hay cam kết cung cấp dịch vụ. Nhà đầu tư cần tìm hiểu kỹ thông tin và tự chịu trách nhiệm về quyết định đầu tư của mình.</p>
     </div>
-
-    <div class="site-footer__bottom">
-      <span>© <span data-year>2026</span> Atlas Research. Bảo lưu mọi quyền.</span>
-      <span>atlas-research-vn.pages.dev</span>
-    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <span>© <span data-year>2026</span> Atlas Research · atlas-research-vn.pages.dev</span>
+    <a href="#noi-dung">Lên đầu trang</a>
   </div>
 </footer>
 
-<script src="js/main.js?v=20261003" defer></script>
+<script src="js/main.js?v=20261030d" defer></script>
 </body>
 </html>

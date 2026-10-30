@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+  MẪU BÀI VIẾT TIN TỨC — copy file này thành affiliate_hub/news/<duong-dan-bai>/index.html
+  rồi thay mọi chỗ {{...}}. Ảnh đặt cạnh file: affiliate_hub/news/<duong-dan-bai>/thumb.jpg
+  (ảnh đại diện, tỉ lệ 16:9, rộng ~1600px) và các ảnh minh hoạ khác nếu có.
+  {{SLUG}} phải trùng tên thư mục và trùng view-transition-name của thẻ ở news/index.html.
+-->
+<html lang="vi" class="no-js page-news">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TIÊU ĐỀ}} | Atlas Research</title>
+<meta name="description" content="{{MÔ TẢ NGẮN 1–2 CÂU}}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://atlas-research-vn.pages.dev/news/{{SLUG}}/">
+<meta name="theme-color" content="#F6F8FB">
+
+<link rel="icon" href="../../img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="../../img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Atlas Research">
+<meta property="og:title" content="{{TIÊU ĐỀ}}">
+<meta property="og:description" content="{{MÔ TẢ NGẮN 1–2 CÂU}}">
+<meta property="og:url" content="https://atlas-research-vn.pages.dev/news/{{SLUG}}/">
+<meta property="og:image" content="https://atlas-research-vn.pages.dev/news/{{SLUG}}/thumb.jpg">
+<meta property="og:locale" content="vi_VN">
+<meta property="article:published_time" content="{{YYYY-MM-DD}}">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{TIÊU ĐỀ}}",
+  "image": ["https://atlas-research-vn.pages.dev/news/{{SLUG}}/thumb.jpg"],
+  "datePublished": "{{YYYY-MM-DD}}",
+  "inLanguage": "vi-VN",
+  "publisher": { "@type": "Organization", "name": "Atlas Research" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="../../css/style.css?v=20261030d">
+</head>
+<body>
+
+<a class="skip-link" href="#noi-dung">Bỏ qua điều hướng</a>
+
+<header class="bar">
+  <a class="bar__brand" href="../../">
+    <img src="../../img/logo.svg" alt="" width="32" height="32">
+    <span>Atlas Research</span>
+  </a>
+  <nav class="bar__nav" aria-label="Điều hướng chính">
+    <a href="../../#doi-tac">Các sàn</a>
+    <a href="../../#kiem-tra">Kiểm tra link</a>
+    <a href="../../#an-toan">An toàn</a>
+    <a href="../" class="is-current">Tin tức</a>
+  </nav>
+  <a class="btn btn--primary bar__action" href="../../#kiem-tra">Kiểm tra link</a>
+</header>
+
+<main id="noi-dung" class="article">
+  <img class="article__hero" src="thumb.jpg" alt="{{MÔ TẢ ẢNH}}" width="1600" height="900" style="view-transition-name:thumb-{{SLUG}}">
+
+  <header class="article__head">
+    <a class="article__back" href="../">← Tất cả tin tức</a>
+    <h1 class="article__title">{{TIÊU ĐỀ}}</h1>
+    <p class="article__meta"><time datetime="{{YYYY-MM-DD}}">{{DD/MM/YYYY}}</time> · {{CHUYÊN MỤC}}</p>
+    <p class="article__lead">{{SAPO: 1–2 CÂU TÓM TẮT}}</p>
+  </header>
+
+  <div class="prose">
+    <p>{{ĐOẠN VĂN}}</p>
+    <h2>{{TIÊU ĐỀ MỤC}}</h2>
+    <p>{{ĐOẠN VĂN}}</p>
+    <figure>
+      <img src="{{anh-minh-hoa.jpg}}" alt="{{MÔ TẢ ẢNH}}" loading="lazy">
+      <figcaption>{{CHÚ THÍCH ẢNH}}</figcaption>
+    </figure>
+    <p class="source">Nguồn: {{NGUỒN}}</p>
+  </div>
+</main>
+
+<footer class="site-footer site-footer--compact">
+  <div class="site-footer__bottom">
+    <span>© <span data-year>2026</span> Atlas Research · Thông tin mang tính tham khảo, không phải lời khuyên đầu tư.</span>
+    <a href="../">Tất cả tin tức</a>
+  </div>
+</footer>
+
+<script src="../../js/main.js?v=20261030d" defer></script>
+</body>
+</html>
+
+<!--
+  THẺ BÀI TRONG news/index.html (dán ngay sau dòng "BÀI VIẾT: bắt đầu", bài mới nhất lên trên):
+
+    <article class="story">
+      <a href="{{SLUG}}/">
+        <div class="story__body">
+          <p class="story__meta"><time data-relative datetime="{{YYYY-MM-DDTHH:MM+07:00}}">{{DD/MM/YYYY}}</time> · {{CHUYÊN MỤC}}</p>
+          <h2 class="story__title">{{TIÊU ĐỀ}}</h2>
+          <p class="story__excerpt">{{SAPO}}</p>
+        </div>
+        <img class="story__thumb" src="{{SLUG}}/thumb.jpg" alt="" width="1600" height="900" loading="lazy" style="view-transition-name:thumb-{{SLUG}}">
+      </a>
+    </article>
+-->
