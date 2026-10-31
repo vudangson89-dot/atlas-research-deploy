@@ -1,4 +1,4 @@
-<#
+﻿<#
   ATLAS RESEARCH — news-agent-install.ps1
   Cài agent tin tức lên máy Windows có GPU (máy chạy studio YouTube / ComfyUI):
     - tác vụ "AtlasNews-Scan": mỗi 60 phút quét VnExpress, viết lại qua OpenRouter,

@@ -131,8 +131,11 @@ Cài trên máy Windows (Python ≥ 3.10, git đã đăng nhập GitHub có quy�
 
 1. Tạo bot qua [@BotFather](https://t.me/BotFather) lấy token. Nhắn cho bot (hoặc thêm bot vào nhóm),
    mở `https://api.telegram.org/bot<TOKEN>/getUpdates` để lấy `chat.id` và id người duyệt (`from.id`).
-2. Chạy (lần đầu script clone repo riêng cho agent, tạo venv và file cấu hình rồi dừng):
+2. Clone repo vào thư mục riêng của agent rồi chạy script từ đó (lần đầu script tạo venv và
+   file cấu hình rồi dừng):
    ```powershell
+   git clone https://github.com/Hoang-Minh-Nghia/atlas-research-deploy.git D:\atlas-news\repo
+   cd D:\atlas-news\repo
    powershell -ExecutionPolicy Bypass -File scripts\news-agent-install.ps1 -RepoDir D:\atlas-news\repo
    ```
 3. Điền `%LOCALAPPDATA%\atlas-news\atlas-news.env`: `OPENROUTER_API_KEY`, `TELEGRAM_*`,
