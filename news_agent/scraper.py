@@ -16,6 +16,7 @@ from bs4 import BeautifulSoup
 from . import config
 
 log = logging.getLogger(__name__)
+VN_TZ = ZoneInfo("Asia/Ho_Chi_Minh")
 ARTICLE_URL_RE = re.compile(r"^https://vnexpress\.net/[a-z0-9-]+-\d{6,}\.html$")
 
 
@@ -27,6 +28,24 @@ class SourceArticle:
     paragraphs: list[str] = field(default_factory=list)
     published: str = ""  # ISO 8601 nếu đọc được
     category: str = ""
+
+    def published_at(self) -> datetime | None:
+        """Giờ đăng bài gốc (múi giờ Việt Nam nếu nguồn không ghi múi giờ); None nếu không đọc được."""
+        raw = (self.published or "").strip()
+        if not raw:
+            return None
+        try:
+            dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        except ValueError:
+            m = re.match(r"(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2})", raw)
+            if not m:
+                return None
+            dt = datetime.fromisoformat(f"{m.group(1)}T{m.group(2)}")
+        return dt if dt.tzinfo else dt.replace(tzinfo=VN_TZ)
+
+    def age_hours(self) -> float | None:
+        dt = self.published_at()
+        return None if dt is None else (datetime.now(VN_TZ) - dt).total_seconds() / 3600
 
     def content_hash(self) -> str:
         """Hash nội dung (chống viết trùng khi cùng bài đổi URL)."""
@@ -78,6 +97,14 @@ def _ld_json(soup: BeautifulSoup) -> dict:
     return {}
 
 
+def too_old(src: "SourceArticle") -> bool:
+    """Bài cũ hơn MAX_AGE_HOURS. Không đọc được giờ đăng thì coi là quá cũ để chắc chắn chỉ lấy tin mới."""
+    if config.MAX_AGE_HOURS <= 0:
+        return False
+    age = src.age_hours()
+    return age is None or age > config.MAX_AGE_HOURS
+
+
 def fetch_article(url: str, session: requests.Session | None = None) -> SourceArticle:
     if urlparse(url).hostname != "vnexpress.net":
         raise ValueError(f"URL không thuộc nguồn cho phép: {url}")
@@ -117,4 +144,4 @@ def fetch_article(url: str, session: requests.Session | None = None) -> SourceAr
 
 
 def now_iso() -> str:
-    return datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")).isoformat(timespec="minutes")
+    return datetime.now(VN_TZ).isoformat(timespec="minutes")

@@ -42,6 +42,8 @@ def _get(name: str, default: str = "") -> str:
 SOURCE_URL = _get("SOURCE_URL", "https://vnexpress.net/tag/tai-san-so-1064801")
 SOURCE_NAME = _get("SOURCE_NAME", "VnExpress")
 MAX_PER_RUN = int(_get("MAX_PER_RUN", "3"))
+# Chỉ lấy bài đăng trong bấy nhiêu giờ gần nhất (0 = không giới hạn).
+MAX_AGE_HOURS = float(_get("MAX_AGE_HOURS", "12"))
 DRAFT_TTL_DAYS = int(_get("DRAFT_TTL_DAYS", "7"))
 USER_AGENT = _get("USER_AGENT", "AtlasResearchNewsBot/1.0 (+https://atlas-research-vn.pages.dev/)")
 

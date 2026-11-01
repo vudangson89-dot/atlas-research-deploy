@@ -60,6 +60,10 @@ def run(limit: int) -> int:
             log.exception("Không đọc được %s", url)
             notify_error(f"không đọc được {url}: {e}")
             continue
+        if scraper.too_old(src):
+            log.info("Bỏ qua (đăng quá %s giờ hoặc không rõ giờ đăng: %r): %s", config.MAX_AGE_HOURS, src.published, url)
+            db.mark_seen(url)
+            continue
         if db.hash_seen(src.content_hash()):
             log.info("Bỏ qua (trùng nội dung đã viết): %s", url)
             db.mark_seen(url)
@@ -98,9 +102,22 @@ def dry_run(limit: int, out: Path) -> int:
     print(f"Tìm thấy {len(urls)} bài trên trang nguồn:")
     for u in urls:
         print("  ", u)
+    fresh = []
+    for url in urls:
+        if len(fresh) >= limit:
+            break
+        src = scraper.fetch_article(url, session)
+        age = src.age_hours()
+        print(f"  {url} — đăng {'?' if age is None else f'{age:.1f}'} giờ trước")
+        if scraper.too_old(src):
+            print(f"    dừng: quá {config.MAX_AGE_HOURS} giờ hoặc không rõ giờ đăng (các bài sau còn cũ hơn)")
+            break
+        fresh.append(src)
+    if not fresh:
+        print(f"Không có bài nào trong {config.MAX_AGE_HOURS} giờ gần nhất.")
+        return 0
     with imager.session():
-        for url in urls[:limit]:
-            src = scraper.fetch_article(url, session)
+        for src in fresh:
             article = pipeline.build_draft(src, out_root=out)
             folder = out / article["slug"]
             (folder / "article.json").write_text(json.dumps(article, ensure_ascii=False, indent=2), encoding="utf-8")

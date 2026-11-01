@@ -107,7 +107,7 @@ Thư mục `news_agent/` (không deploy lên web). Chạy trên **máy Windows c
 vì ảnh được vẽ miễn phí bằng ComfyUI + FLUX.2 klein qua `lib\images.py` của studio.
 
 - **Mỗi 60 phút** (tác vụ `AtlasNews-Scan`): quét `https://vnexpress.net/tag/tai-san-so-1064801`,
-  với mỗi bài mới (tối đa `MAX_PER_RUN`, chống trùng theo URL và hash nội dung):
+  với mỗi bài mới đăng trong 12 giờ gần nhất (`MAX_AGE_HOURS`; tối đa `MAX_PER_RUN` bài, chống trùng theo URL và hash nội dung):
   1. viết lại bằng lời văn của Atlas Research qua OpenRouter (`llm.py`, theo bộ rewrite kit của
      Social_product: tự chọn model rẻ nhất trong danh mục đã kiểm định, bảng giá cache 24h,
      model lỗi thì thử model kế tiếp, lỗi 401/402/403 thì dừng, luôn tắt reasoning);
