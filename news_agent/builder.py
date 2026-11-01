@@ -37,7 +37,7 @@ def _prose(article: dict) -> str:
             )
     src = article["source_url"]
     out.append(
-        f'    <p class="source">Nguồn tham khảo: <a href="{e(src)}" target="_blank" rel="nofollow noopener">{e(config.SOURCE_NAME)}</a></p>'
+        f'    <p class="source">Nguồn tham khảo: <a href="{e(src)}" target="_blank" rel="nofollow noopener">{e(article.get("source", {}).get("source_name") or config.SOURCE_NAME)}</a></p>'
     )
     return "\n".join(out)
 

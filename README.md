@@ -106,7 +106,8 @@ Mỗi bài là một thư mục riêng: `affiliate_hub/news/<duong-dan-bai>/` ch
 Thư mục `news_agent/` (không deploy lên web). Chạy trên **máy Windows có GPU** (máy studio YouTube),
 vì ảnh được vẽ miễn phí bằng ComfyUI + FLUX.2 klein qua `lib\images.py` của studio.
 
-- **Mỗi 60 phút** (tác vụ `AtlasNews-Scan`): quét `https://vnexpress.net/tag/tai-san-so-1064801`,
+- **Mỗi 60 phút** (tác vụ `AtlasNews-Scan`): quét `https://vnexpress.net/tag/tai-san-so-1064801`
+  và Blog Tiền Ảo (`https://blogtienao.com/tin-tuc/`, đọc qua RSS; thêm/bớt nguồn ở `EXTRA_FEEDS`),
   với mỗi bài mới đăng trong 12 giờ gần nhất (`MAX_AGE_HOURS`; tối đa `MAX_PER_RUN` bài, chống trùng theo URL và hash nội dung):
   1. viết lại bằng lời văn của Atlas Research qua OpenRouter (`llm.py`, theo bộ rewrite kit của
      Social_product: tự chọn model rẻ nhất trong danh mục đã kiểm định, bảng giá cache 24h,
@@ -123,7 +124,7 @@ vì ảnh được vẽ miễn phí bằng ComfyUI + FLUX.2 klein qua `lib\image
   (studio đang dùng), agent **nhường** và để lượt sau (`COMFY_SHARED=1` để dùng chung,
   `IMAGE_FALLBACK=openrouter` để vẽ bằng OpenRouter khi GPU bận). Agent tự bật ComfyUI khi cần
   và **tắt ngay** khi vẽ xong. Máy tắt thì lượt quét bị lỡ sẽ chạy bù khi bật lại.
-- Bài luôn ghi "Nguồn tham khảo: VnExpress" kèm link gốc và dòng miễn trừ; prompt ép trung thực,
+- Bài luôn ghi "Nguồn tham khảo: <tên trang gốc>" kèm link gốc và dòng miễn trừ; prompt ép trung thực,
   diễn đạt lại hoàn toàn. Ảnh không vẽ người thật, không logo thương hiệu thật.
   Sửa giọng văn: `news_agent/prompts/rewrite.md`; phong cách ảnh: `news_agent/prompts/image.md`.
 

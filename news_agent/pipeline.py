@@ -61,7 +61,7 @@ def send_for_review(article: dict, draft_id: int) -> None:
     caption = (
         f"<b>{escape(article['title'])}</b>\n\n{escape(article['lead'])}\n\n"
         f"Chuyên mục: {escape(article['category'])} · model: {escape(article.get('model', '?'))}\n"
-        f"Bài gốc: {escape(article['source_url'])}"
+        f"Bài gốc ({escape(article.get('source', {}).get('source_name', ''))}): {escape(article['source_url'])}"
     )
     telegram.send_photo(folder / "thumb.jpg", caption)
     telegram.send_document(folder / "preview.html", "Mở file để đọc toàn văn bài viết lại.")

@@ -97,7 +97,7 @@ def build_messages(src: SourceArticle, feedback: str = "") -> list[dict]:
         "{{FIGURES}}", str(config.FIGURES_PER_ARTICLE)
     )
     user = (
-        f"Viết lại bài báo nguồn dưới đây ({config.SOURCE_NAME}) thành bài tin của Atlas Research.\n"
+        f"Viết lại bài báo nguồn dưới đây ({src.source_name}) thành bài tin của Atlas Research.\n"
         "Chỉ dùng sự kiện, số liệu, tên riêng có trong bài nguồn.\n\n"
         "Bài nguồn:\n-------------------------\n"
         f"{truncate_source(src.as_text())}\n-------------------------\n"

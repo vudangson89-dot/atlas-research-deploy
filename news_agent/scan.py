@@ -33,42 +33,59 @@ def notify_error(text: str) -> None:
         log.error("Không gửi được cảnh báo Telegram: %s", e)
 
 
+def collect(limit: int, session, failures: list) -> list:
+    """Bài mới (chưa xem, trong MAX_AGE_HOURS, chưa trùng nội dung) từ mọi nguồn, tối đa `limit` bài mỗi nguồn."""
+    picked = []
+    for source in config.sources():
+        try:
+            cands = [c for c in scraper.list_candidates(source, session) if not db.is_seen(c.url)]
+        except Exception as e:  # noqa: BLE001 — một nguồn lỗi không chặn nguồn khác
+            failures.append(e)
+            log.error("Không tải được nguồn %s: %s", source["name"], e)
+            notify_error(f"không tải được nguồn {source['name']} ({source['url']}): {e}")
+            continue
+        key = f"initialized:{source['url']}"
+        if not db.get_kv(key):
+            # Lần đầu gặp nguồn này: các bài cũ hơn `limit` bài mới nhất coi như đã xem.
+            for c in cands[limit:]:
+                db.mark_seen(c.url)
+            db.set_kv(key, "1")
+            cands = cands[:limit]
+        taken = 0
+        for c in cands:
+            if taken >= limit:
+                break
+            if c.known_too_old():
+                db.mark_seen(c.url)
+                continue
+            try:
+                src = c.load(session)
+            except Exception as e:  # noqa: BLE001
+                failures.append(e)
+                log.exception("Không đọc được %s", c.url)
+                notify_error(f"không đọc được {c.url}: {e}")
+                continue
+            if scraper.too_old(src):
+                log.info("Bỏ qua (đăng quá %s giờ hoặc không rõ giờ đăng: %r): %s", config.MAX_AGE_HOURS, src.published, c.url)
+                db.mark_seen(c.url)
+                continue
+            if db.hash_seen(src.content_hash()):
+                log.info("Bỏ qua (trùng nội dung đã viết): %s", c.url)
+                db.mark_seen(c.url)
+                continue
+            picked.append(src)
+            taken += 1
+    picked.sort(key=lambda s: s.published_at() or scraper.datetime.min.replace(tzinfo=scraper.VN_TZ))  # cũ trước
+    return picked
+
+
 def run(limit: int) -> int:
     config.require("OPENROUTER_API_KEY", "TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID")
     cleanup_expired()
     session = scraper.new_session()
-    try:
-        urls = [u for u in scraper.list_article_urls(session) if not db.is_seen(u)]
-    except Exception as e:  # noqa: BLE001
-        log.error("Không tải được trang nguồn: %s", e)
-        notify_error(f"không tải được trang nguồn {config.SOURCE_URL}: {e}")
-        return 1
-    if not db.get_kv("initialized"):
-        # Lần chạy đầu: chỉ lấy `limit` bài mới nhất, các bài cũ hơn coi như đã xem.
-        for u in urls[limit:]:
-            db.mark_seen(u)
-        db.set_kv("initialized", "1")
-    urls = urls[:limit]
-
-    sources = []
-    failures = 0
-    for url in reversed(urls):  # cũ trước, mới sau
-        try:
-            src = scraper.fetch_article(url, session)
-        except Exception as e:  # noqa: BLE001
-            failures += 1
-            log.exception("Không đọc được %s", url)
-            notify_error(f"không đọc được {url}: {e}")
-            continue
-        if scraper.too_old(src):
-            log.info("Bỏ qua (đăng quá %s giờ hoặc không rõ giờ đăng: %r): %s", config.MAX_AGE_HOURS, src.published, url)
-            db.mark_seen(url)
-            continue
-        if db.hash_seen(src.content_hash()):
-            log.info("Bỏ qua (trùng nội dung đã viết): %s", url)
-            db.mark_seen(url)
-            continue
-        sources.append(src)
+    errors: list = []
+    sources = collect(limit, session, errors)
+    failures = len(errors)
     log.info("Có %d bài mới cần viết", len(sources))
     if not sources:
         return 1 if failures else 0
@@ -98,23 +115,36 @@ def run(limit: int) -> int:
 def dry_run(limit: int, out: Path) -> int:
     config.require("OPENROUTER_API_KEY")
     session = scraper.new_session()
-    urls = scraper.list_article_urls(session)
-    print(f"Tìm thấy {len(urls)} bài trên trang nguồn:")
-    for u in urls:
-        print("  ", u)
     fresh = []
-    for url in urls:
-        if len(fresh) >= limit:
-            break
-        src = scraper.fetch_article(url, session)
-        age = src.age_hours()
-        print(f"  {url} — đăng {'?' if age is None else f'{age:.1f}'} giờ trước")
-        if scraper.too_old(src):
-            print(f"    dừng: quá {config.MAX_AGE_HOURS} giờ hoặc không rõ giờ đăng (các bài sau còn cũ hơn)")
-            break
-        fresh.append(src)
+    for source in config.sources():
+        print(f"\n== {source['name']} ({source['url']})")
+        try:
+            cands = scraper.list_candidates(source, session)
+        except Exception as e:  # noqa: BLE001
+            print(f"   lỗi tải nguồn: {e}")
+            continue
+        print(f"   tìm thấy {len(cands)} bài")
+        taken = 0
+        for c in cands:
+            if taken >= limit:
+                break
+            if c.known_too_old():
+                print(f"   dừng: {c.url} đăng quá {config.MAX_AGE_HOURS} giờ (các bài sau còn cũ hơn)")
+                break
+            try:
+                src = c.load(session)
+            except Exception as e:  # noqa: BLE001
+                print(f"   không đọc được {c.url}: {e}")
+                continue
+            age = src.age_hours()
+            print(f"   {c.url} — đăng {'?' if age is None else f'{age:.1f}'} giờ trước, {len(src.paragraphs)} đoạn")
+            if scraper.too_old(src):
+                print(f"   dừng: quá {config.MAX_AGE_HOURS} giờ hoặc không rõ giờ đăng")
+                break
+            fresh.append(src)
+            taken += 1
     if not fresh:
-        print(f"Không có bài nào trong {config.MAX_AGE_HOURS} giờ gần nhất.")
+        print(f"\nKhông có bài nào trong {config.MAX_AGE_HOURS} giờ gần nhất.")
         return 0
     with imager.session():
         for src in fresh:

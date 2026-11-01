@@ -41,6 +41,20 @@ def _get(name: str, default: str = "") -> str:
 
 SOURCE_URL = _get("SOURCE_URL", "https://vnexpress.net/tag/tai-san-so-1064801")
 SOURCE_NAME = _get("SOURCE_NAME", "VnExpress")
+# Nguồn RSS thêm, dạng "Tên|link feed|link trang danh sách (dự phòng)", nhiều nguồn cách nhau bằng dấu ;
+EXTRA_FEEDS = _get(
+    "EXTRA_FEEDS",
+    "Blog Tiền Ảo|https://blogtienao.com/tin-tuc/feed/|https://blogtienao.com/tin-tuc/",
+)
+
+
+def sources() -> list[dict]:
+    out = [{"name": SOURCE_NAME, "kind": "vnexpress", "url": SOURCE_URL}] if SOURCE_URL else []
+    for chunk in EXTRA_FEEDS.split(";"):
+        parts = [x.strip() for x in chunk.split("|")]
+        if len(parts) >= 2 and parts[1].startswith("http"):
+            out.append({"name": parts[0], "kind": "rss", "url": parts[1], "listing": parts[2] if len(parts) > 2 else ""})
+    return out
 MAX_PER_RUN = int(_get("MAX_PER_RUN", "3"))
 # Chỉ lấy bài đăng trong bấy nhiêu giờ gần nhất (0 = không giới hạn).
 MAX_AGE_HOURS = float(_get("MAX_AGE_HOURS", "12"))
